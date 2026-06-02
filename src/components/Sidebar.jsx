@@ -27,19 +27,14 @@ export default function Sidebar({ active }) {
 
   return (
     <nav className="sidebar">
-      <div className="sidebar-logo">
-        <div className="logo-text">Capex ICC</div>
-        <div className="logo-sub">Telkom EBR · June 2026</div>
-      </div>
-      <div className="nav-section-label">Navigation</div>
+      <div className="nav-section-label" style={{ marginTop: 8 }}>Sections</div>
       {navItems.map(({ id, label, icon: Icon }) => (
         <button
           key={id}
           className={`nav-item${active === id ? ' active' : ''}`}
           onClick={() => scrollTo(id)}
-          style={{ background: 'none', border: 'none', width: '100%', textAlign: 'left', cursor: 'pointer' }}
         >
-          <Icon size={14} />
+          <Icon size={13} />
           {label}
         </button>
       ))}

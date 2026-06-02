@@ -50,7 +50,7 @@ const columns = [
 
 export default function AutomationPipeline() {
   return (
-    <section className="section" id="automation">
+    <section className="section alt" id="automation">
       <div className="section-tag">Section 04</div>
       <h2 className="section-title">RPA & Automation <span>Pipeline</span></h2>
       <p className="section-subtitle">

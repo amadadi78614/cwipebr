@@ -54,7 +54,7 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <section className="section" id="highlights">
+    <section className="section alt" id="highlights">
       <div className="section-tag">Section 01</div>
       <h2 className="section-title">FY26 <span>Highlights</span></h2>
       <p className="section-subtitle">

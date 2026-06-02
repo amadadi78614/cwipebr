@@ -1,39 +1,60 @@
+// Inline SVG logos for hero section
+const WNSLogoHero = () => (
+  <svg height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="40" rx="4" fill="#E8002D"/>
+    <text x="8" y="26" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="20" fill="white">WNS</text>
+    <text x="8" y="36" fontFamily="Arial, sans-serif" fontSize="7" fill="rgba(255,255,255,0.85)" letterSpacing="0.5">Part of Capgemini</text>
+  </svg>
+);
+
+const TelkomLogoHero = () => (
+  <svg height="34" viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="28" fontFamily="Arial, sans-serif" fontWeight="800" fontSize="30" fill="#0082ca" letterSpacing="-0.5">Telkom</text>
+  </svg>
+);
+
 const kpis = [
-  { value: '>74%',    label: 'Capital Conversion Rate', variant: 'default' },
-  { value: 'R433m',   label: 'Mobile PMO FNLD (from R684m)', variant: 'gold' },
-  { value: '99.6%',   label: 'Asset Verification Completed', variant: 'green' },
-  { value: '4',       label: 'Active Automation Initiatives', variant: 'default' },
-  { value: '9',       label: 'Future Opportunities Scoped', variant: 'gold' },
-  { value: '36',      label: 'CoE Value-Add Projects Delivered', variant: 'default' },
-  { value: 'Zero',    label: 'Audit Issues', variant: 'green' },
-  { value: 'Proven',  label: 'Decade Value Record', variant: 'gold' },
+  { value: '>74%',    label: 'Capital Conversion Rate',              variant: 'default' },
+  { value: 'R433m',   label: 'Mobile PMO FNLD (↓ from R684m)',       variant: 'gold' },
+  { value: '99.6%',   label: 'Asset Verification Completed',         variant: 'green' },
+  { value: '4',       label: 'Active Automation Initiatives',        variant: 'default' },
+  { value: '9',       label: 'Future Opportunities Scoped',          variant: 'gold' },
+  { value: '36',      label: 'CoE Value-Add Projects Delivered',     variant: 'default' },
+  { value: 'Zero',    label: 'Audit Issues',                         variant: 'green' },
+  { value: 'Proven',  label: 'Decade Value Record',                  variant: 'gold' },
 ];
 
 export default function Hero() {
   return (
     <section className="hero" id="hero">
-      <div className="hero-grid-bg" />
-      <div className="hero-glow" />
-      <div className="hero-glow-2" />
+      <div className="hero-pattern" />
+      <div className="hero-accent-bar" />
 
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1200 }}>
-        <div className="hero-badge">
-          <span>Live EBR Dashboard</span>
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100 }}>
+        {/* Logos */}
+        <div className="hero-logos">
+          <WNSLogoHero />
+          <div className="hero-logo-div" />
+          <TelkomLogoHero />
+        </div>
+
+        <div className="hero-eyebrow">
+          Shared Services · AM & Project Accounting
         </div>
 
         <h1 className="hero-title">
-          <span className="accent">Capex</span> Intelligence<br />
-          <span className="gold">Command</span> Centre
+          <span className="blue">Capex</span> Intelligence<br />
+          <span className="accent">Command</span> Centre
         </h1>
 
         <p className="hero-subtitle">
-          Telkom Shared Services &nbsp;·&nbsp; AM & Project Accounting Executive Business Review
+          Telkom Shared Services &nbsp;·&nbsp; Executive Business Review
         </p>
-        <p className="hero-date">June 2026 &nbsp;·&nbsp; WNS Global Services</p>
+        <p className="hero-date">June 2026 &nbsp;·&nbsp; WNS Global Services · Part of Capgemini</p>
 
-        <div className="hero-divider" />
+        <div className="hero-rule" />
 
-        <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 32, maxWidth: 600, fontStyle: 'italic' }}>
+        <p style={{ fontSize: 13.5, color: 'var(--text-secondary)', marginBottom: 32, maxWidth: 580, fontStyle: 'italic', lineHeight: 1.7 }}>
           "From asset management and CWIP execution → automation → predictive analytics → agentic capital management."
         </p>
 

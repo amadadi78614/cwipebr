@@ -49,7 +49,7 @@ const panels = [
 
 export default function HumanModel() {
   return (
-    <section className="section" id="human">
+    <section className="section alt" id="human">
       <div className="section-tag">Section 11</div>
       <h2 className="section-title">Human-Centred <span>Automation Model</span></h2>
       <p className="section-subtitle">

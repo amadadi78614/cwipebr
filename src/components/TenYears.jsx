@@ -82,7 +82,7 @@ const timeline = [
 
 export default function TenYears() {
   return (
-    <section className="section" id="tenyears">
+    <section className="section alt" id="tenyears">
       <div className="section-tag">Section 09</div>
       <h2 className="section-title">Ten Years. <span>One Team.</span></h2>
 
