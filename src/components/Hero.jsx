@@ -16,10 +16,6 @@ export default function Hero() {
       <div className="hero-accent-bar" />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100 }}>
-        <div className="hero-logos">
-          <img src="/logos.png" alt="WNS | Telkom" style={{ height: 48, width: 'auto', objectFit: 'contain' }} />
-        </div>
-
         <div className="hero-eyebrow">
           Shared Services · AM & Project Accounting
         </div>
