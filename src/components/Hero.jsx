@@ -1,15 +1,15 @@
-// Inline SVG logos for hero section
-const WNSLogoHero = () => (
-  <svg height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="120" height="40" rx="4" fill="#E8002D"/>
-    <text x="8" y="26" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="20" fill="white">WNS</text>
-    <text x="8" y="36" fontFamily="Arial, sans-serif" fontSize="7" fill="rgba(255,255,255,0.85)" letterSpacing="0.5">Part of Capgemini</text>
+const WNSLogo = ({ height = 44 }) => (
+  <svg height={height} viewBox="0 0 140 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="140" height="44" rx="3" fill="#1a1a2e"/>
+    <text x="8" y="30" fontFamily="Arial Black, Arial, sans-serif" fontWeight="900" fontSize="24" fill="white" letterSpacing="1">WNS</text>
+    <text x="8" y="40" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="8" fill="rgba(255,255,255,0.75)" letterSpacing="0.3">Part of Capgemini</text>
   </svg>
 );
 
-const TelkomLogoHero = () => (
-  <svg height="34" viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <text x="0" y="28" fontFamily="Arial, sans-serif" fontWeight="800" fontSize="30" fill="#0082ca" letterSpacing="-0.5">Telkom</text>
+const TelkomLogo = ({ height = 38 }) => (
+  <svg height={height} viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="26" fontFamily="Arial, Helvetica, sans-serif" fontWeight="900" fontSize="28" fill="#00b5e2" letterSpacing="-1">T</text>
+    <text x="20" y="26" fontFamily="Arial, Helvetica, sans-serif" fontWeight="400" fontSize="28" fill="#00b5e2" letterSpacing="-0.5">elkom</text>
   </svg>
 );
 
@@ -31,11 +31,10 @@ export default function Hero() {
       <div className="hero-accent-bar" />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100 }}>
-        {/* Logos */}
         <div className="hero-logos">
-          <WNSLogoHero />
+          <WNSLogo height={44} />
           <div className="hero-logo-div" />
-          <TelkomLogoHero />
+          <TelkomLogo height={38} />
         </div>
 
         <div className="hero-eyebrow">
