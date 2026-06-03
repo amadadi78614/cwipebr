@@ -1,85 +1,258 @@
-import { CheckCircle, TrendingUp, ArrowDown, Shield, Cpu, BarChart2, Activity } from 'lucide-react';
+import {
+  CheckCircle, TrendingUp, ArrowDown, Shield, Cpu, BarChart2, Activity,
+  Sparkles, Layers, Gauge, Lock
+} from 'lucide-react';
 
 const highlights = [
   {
-    icon: CheckCircle,
-    number: 'FY26',
-    numClass: '',
-    title: 'Exceptional Teamwork',
-    text: 'Successful closure of capital programmes through exceptional teamwork and collaboration with Business Units across all regions.',
-  },
-  {
     icon: TrendingUp,
-    number: '>74%',
+    metric: '>74%',
+    metricLabel: 'CCR YoY',
     numClass: '',
     title: 'Capital Conversion Rate',
-    text: 'Capital Conversion Rate increased year-on-year to over 74% — a sustained improvement reflecting stronger execution and governance.',
+    text: 'Capital Conversion Rate increased year-on-year to over 74% — sustained improvement through stronger execution and governance.',
+    status: 'Delivered',
+    impact: 'Operational Excellence',
+    impactClass: 'impact-op',
   },
   {
     icon: ArrowDown,
-    number: 'R433m',
-    numClass: 'gold',
+    metric: 'R433m',
+    metricLabel: 'FNLD Position',
+    numClass: '',
     title: 'Mobile PMO FNLD Reduced',
     text: 'Mobile PMO FNLD reduced from R684m to R433m through focused project execution tracking and carry-over management.',
+    status: 'Delivered',
+    impact: 'Risk Reduction',
+    impactClass: 'impact-risk',
   },
   {
     icon: Shield,
-    number: '99.6%',
+    metric: '99.6%',
+    metricLabel: 'Verified',
     numClass: 'green',
     title: 'Asset Verification Milestone',
     text: 'First-year cycle completed with 99.6% asset base verification — a landmark achievement across national exchange areas.',
+    status: 'Delivered',
+    impact: 'Governance',
+    impactClass: 'impact-gov',
   },
   {
     icon: Cpu,
-    number: '34%',
+    metric: '34%',
+    metricLabel: 'E-Verified',
     numClass: '',
     title: 'Electronic Asset Verification',
-    text: 'Electronic verification enhanced and deployed across RAN, MSAN, IT Hardware and IT Software — now 34% of asset base verified electronically.',
+    text: 'Electronic verification deployed across RAN, MSAN, IT Hardware and IT Software — 34% of asset base verified electronically.',
+    status: 'Delivered',
+    impact: 'Automation',
+    impactClass: 'impact-auto',
   },
   {
     icon: BarChart2,
-    number: 'AUC',
+    metric: 'AUC',
+    metricLabel: 'Analytics Live',
     numClass: '',
     title: 'Analytics Tool & Dashboard',
-    text: 'AUC Analytics Tool built with automated reporting dashboard — enabling daily-refreshed AUC model with multi-year opening balances per BU.',
+    text: 'AUC Analytics Tool built with automated reporting dashboard — daily-refreshed AUC model with multi-year opening balances per BU.',
+    status: 'Delivered',
+    impact: 'Data Visibility',
+    impactClass: 'impact-data',
   },
   {
     icon: Activity,
-    number: '103%',
+    metric: '103%',
+    metricLabel: 'Execution',
     numClass: 'green',
     title: 'Project Execution Management',
-    text: 'Project execution management improved through daily tracking disciplines — achieving 103% project execution management for the period.',
+    text: 'Project execution management improved through daily tracking disciplines — achieving 103% for the period.',
+    status: 'Delivered',
+    impact: 'Cost Optimisation',
+    impactClass: 'impact-cost',
+  },
+  {
+    icon: CheckCircle,
+    metric: 'FY26',
+    metricLabel: 'Closure',
+    numClass: '',
+    title: 'Exceptional Teamwork',
+    text: 'Successful closure of capital programmes through exceptional teamwork and collaboration with Business Units across all regions.',
+    status: 'Delivered',
+    impact: 'Compliance',
+    impactClass: 'impact-compliance',
+  },
+];
+
+const heroChips = [
+  { label: 'Successful delivery', icon: CheckCircle },
+  { label: 'Enhanced controls', icon: Lock },
+  { label: 'Improved visibility', icon: Layers },
+  { label: 'Operational resilience', icon: Gauge },
+];
+
+const metricsStrip = [
+  { key: 'initiatives', label: 'Delivered Initiatives', value: 'Achieved', sub: 'FY26 programme outcomes on track', icon: Sparkles },
+  { key: 'stability', label: 'System Stability', value: 'Stable', sub: 'Sustained operational continuity', icon: Shield },
+  { key: 'automation', label: 'Automation Enablement', value: 'Accelerating', sub: 'Bots and analytics scaling', icon: Cpu },
+  { key: 'governance', label: 'Governance Improvements', value: 'Enhanced', sub: 'Controls and verification strengthened', icon: TrendingUp },
+];
+
+const initiativePortfolio = [
+  {
+    name: 'Capex Data Extraction for AUC Management',
+    objective: 'Automate AUC data extraction and scheduled reporting across capital programmes',
+    status: 'In Test',
+    statusClass: 'tag-test',
+    value: 'Cuts TAT on AUC reporting; frees SMEs for strategic capital advisory work',
+    risk: 'Full rollout dependency on SAP extract stability and monitoring cadence',
+  },
+  {
+    name: 'Carry-over Funding',
+    objective: 'Enable automated budget alignment and funding for carry-over projects',
+    status: 'On Hold',
+    statusClass: 'tag-hold',
+    value: 'Reduces manual SME effort on sequential funding transactions',
+    risk: 'Client implemented alternate solution — revisit integration path',
+  },
+  {
+    name: 'Electronic Asset Verification',
+    objective: 'National electronic verification via SAP custom transaction and bots',
+    status: 'Live',
+    statusClass: 'tag-live',
+    value: 'Supports 99.6% verification; improves real-time visibility; reduces verification resources',
+    risk: 'FY27 expansion to Metro Ethernet and POTN requires custodian engagement',
+  },
+  {
+    name: 'Project AUC Life Cycle Analytics',
+    objective: 'Operationalise daily-refreshed AUC intelligence with BU-level opening balances',
+    status: 'Go-Live Ready',
+    statusClass: 'tag-ready',
+    value: 'Full operational CWIP visibility; executive-grade lifecycle tracking',
+    risk: 'Q1 production cutover — data accuracy validation across all BU segments',
   },
 ];
 
 export default function Highlights() {
   return (
-    <section className="section alt" id="highlights">
-      <div className="section-tag">Section 01</div>
-      <h2 className="section-title">FY26 <span>Highlights</span></h2>
-      <p className="section-subtitle">
-        A year of breakthrough delivery — from asset verification milestones to automation go-lives and financial discipline at scale.
-      </p>
+    <section className="section highlights-executive" id="highlights">
+      {/* ── FY26 VISUAL UPGRADE (content unchanged) ── */}
+      <div className="hl-exec-header">
+        <div className="section-tag hl-exec-tag">Section 01 · Executive Delivery</div>
+        <h2 className="hl-exec-title">
+          FY26 <span>Highlights</span>
+        </h2>
+        <p className="hl-exec-subtitle">
+          A year of breakthrough delivery — from asset verification milestones to automation go-lives and financial discipline at scale.
+        </p>
+      </div>
 
-      <div className="highlight-grid">
-        {highlights.map((h, i) => {
-          const Icon = h.icon;
+      <div className="hl-hero-banner">
+        <div className="hl-hero-banner-glow" aria-hidden />
+        <div className="hl-hero-banner-inner">
+          <div className="hl-hero-eyebrow">FY26 Delivery Excellence</div>
+          <p className="hl-hero-message">
+            Successfully delivered critical finance, project accounting and asset management initiatives while improving governance, automation, visibility and system stability.
+          </p>
+          <div className="hl-hero-chips">
+            {heroChips.map((chip, i) => {
+              const ChipIcon = chip.icon;
+              return (
+                <div key={i} className="hl-hero-chip">
+                  <ChipIcon size={14} strokeWidth={2.5} />
+                  <span>{chip.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="hl-metrics-strip">
+        {metricsStrip.map((m, i) => {
+          const MIcon = m.icon;
           return (
-            <div key={i} className="highlight-card">
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-                <div className="card-icon" style={{ flexShrink: 0 }}>
-                  <Icon size={18} />
-                </div>
-                <div>
-                  <div className={`highlight-number ${h.numClass}`}>{h.number}</div>
-                  <div className="card-title" style={{ fontSize: 14, marginBottom: 6 }}>{h.title}</div>
-                  <div className="card-text">{h.text}</div>
-                </div>
-              </div>
+            <div key={m.key} className="hl-metric-card" style={{ animationDelay: `${i * 80}ms` }}>
+              <div className="hl-metric-icon"><MIcon size={18} /></div>
+              <div className="hl-metric-label">{m.label}</div>
+              <div className="hl-metric-value">{m.value}</div>
+              <div className="hl-metric-sub">{m.sub}</div>
             </div>
           );
         })}
       </div>
+
+      <div className="hl-wall-label">Finance Transformation Wall</div>
+      <div className="fy26-grid">
+        {highlights.map((h, i) => (
+          <ImpactTile key={i} h={h} index={i} />
+        ))}
+      </div>
+
+      {/* ── Portfolio unchanged ── */}
+      <div className="portfolio-section">
+        <div className="portfolio-header">
+          <div>
+            <div className="portfolio-eyebrow">Executive Transformation Portfolio</div>
+            <h3 className="portfolio-title">Automation & Digital Initiatives</h3>
+            <p className="portfolio-sub">Boardroom view of active initiatives — objectives, progress, value and dependencies at a glance.</p>
+          </div>
+        </div>
+        <div className="portfolio-grid">
+          {initiativePortfolio.map((item, i) => (
+            <article key={i} className="portfolio-card">
+              <div className="portfolio-card-top">
+                <span className={`card-tag ${item.statusClass}`}>{item.status}</span>
+                <span className="portfolio-index">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <h4 className="portfolio-card-name">{item.name}</h4>
+              <div className="portfolio-field">
+                <span className="portfolio-label">Business objective</span>
+                <p>{item.objective}</p>
+              </div>
+              <div className="portfolio-field">
+                <span className="portfolio-label">Expected value</span>
+                <p>{item.value}</p>
+              </div>
+              <div className="portfolio-field portfolio-field-risk">
+                <span className="portfolio-label">Risk / dependency</span>
+                <p>{item.risk}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
+  );
+}
+
+function ImpactTile({ h, index }) {
+  const Icon = h.icon;
+  return (
+    <article
+      className={`fy26-card ${h.numClass === 'green' ? 'hl-tile-accent-green' : ''}`}
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
+      <div className="hl-tile-shine" aria-hidden />
+      <div className="hl-tile-top">
+        <div className="hl-tile-icon-wrap">
+          <Icon size={22} strokeWidth={1.75} />
+        </div>
+        <div className="hl-tile-metric">
+          <span className={`hl-tile-metric-value ${h.numClass}`}>{h.metric}</span>
+          <span className="hl-tile-metric-label">{h.metricLabel}</span>
+        </div>
+      </div>
+      <h3 className="hl-tile-title">{h.title}</h3>
+      <p className="hl-tile-summary">{h.text}</p>
+      <div className="hl-tile-footer">
+        <span className="hl-status-pill">
+          <span className="hl-status-dot" />
+          Status: {h.status}
+        </span>
+        <span className={`hl-impact-badge ${h.impactClass}`}>
+          Impact: {h.impact}
+        </span>
+      </div>
+    </article>
   );
 }

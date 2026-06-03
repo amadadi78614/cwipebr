@@ -6,7 +6,7 @@ export default function TopBar() {
         <div className="topbar-divider" />
         <img src="/telkom-logo.png" alt="Telkom" style={{ height: 28, width: 'auto', objectFit: 'contain' }} />
       </div>
-      <div className="topbar-title">Capex Intelligence Command Centre</div>
+      <div className="topbar-title">Project Accounting & Asset Management</div>
       <div className="topbar-badge">EBR · June 2026</div>
     </header>
   );
