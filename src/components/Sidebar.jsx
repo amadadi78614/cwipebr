@@ -9,9 +9,9 @@ const faNav = [
   { id: 'fa-intro',     label: 'Introduction', icon: LayoutDashboard },
   { id: 'fa-hero',      label: 'Overview',     icon: LayoutDashboard },
   { id: 'fa-transform', label: 'FY27 Focus',   icon: Target },
-  { id: 'fa-roadmap',   label: 'Analytics',    icon: BarChart2 },
   { id: 'fa-heatmap',   label: 'Auto Engine',  icon: Zap },
   { id: 'fa-trends',    label: 'AI Trends',    icon: Globe },
+  { id: 'fa-roadmap',   label: 'Analytics',    icon: BarChart2 },
   { id: 'fa-risks',     label: 'Risk & Gov',   icon: Shield },
   { id: 'fa-takeaway',  label: 'Takeaway',     icon: Sparkles },
 ];
