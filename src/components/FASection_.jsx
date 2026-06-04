@@ -235,7 +235,28 @@ export default function FASection() {
         </div>
       </section>
 
-
+      {/* ── FY26 Executive Highlights ── */}
+      <section className="section alt" id="fa-highlights">
+        <div className="section-tag">F&A · Section 01</div>
+        <h2 className="section-title">Executive <span>Snapshot</span></h2>
+        <p className="section-subtitle">FY26 performance highlights — closure excellence, digital delivery, automation, analytics and recognition.</p>
+        <div className="highlight-grid">
+          {fy26Highlights.map((h, i) => {
+            const Icon = h.icon;
+            return (
+              <div key={i} className="highlight-card">
+                <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div className={`card-icon ${h.variant}`} style={{ flexShrink: 0 }}><Icon size={17} /></div>
+                  <div>
+                    <div className="card-title" style={{ fontSize: 14, marginBottom: 6 }}>{h.title}</div>
+                    <div className="card-text">{h.text}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ── Section 2: Transformation Highlights FY26 ── */}
       <section className="section" id="fa-transform">

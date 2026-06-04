@@ -7,12 +7,11 @@ import {
 
 /* ── Section 1: FY26 Highlights  ── */
 const kpiTiles = [
-  { v: 'FY26',       l: 'Successful year-end closure & audit support',                                                           c: '#fff' },
-  { v: 'SME',        l: 'Testing & implementation of Telkom system deployments',                                                  c: '#00b4d8' },
-  { v: '6+',         l: 'RPA & automation initiatives delivering TAT gains, Accuracy & CSAT',                                    c: '#00b4d8' },
-  { v: 'Analytics',  l: 'Dedicated Analytics Support in Strategic Areas — Cashflow reporting, Insights, and predictive outputs to support cash flow targets', c: '#00b4d8' },
-  { v: 'System',     l: 'System Stabilisation — Wholesale environment (FAM CR closures)',                                        c: '#00b4d8' },
-  { v: 'WNS BPET League Award 2026',      l: 'Consistent Telkom campaign VOC scores',                                    c: '#e07b00' },
+  { v: 'FY26', l: 'Successful year-end closure & audit support', c: '#fff' },
+  { v: '6+', l: 'RPA & automation initiatives delivering TAT gains', c: '#00b4d8' },
+  { v: 'Award', l: 'WNS BPET League 2026 — VOC excellence', c: '#e07b00' },
+  { v: '4', l: 'FY27 strategic priority pillars', c: '#00b4d8' },
+  { v: 'Pipeline', l: '7 Pipeline initiatives in FY27', c: '#00b4d8' },
 ];
 
 const fy26Highlights = [
@@ -224,18 +223,39 @@ export default function FASection() {
           <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', marginBottom: 32, maxWidth: 720, lineHeight: 1.65 }}>
             From operational finance to predictive, AI-enabled strategic advisory.
           </p>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:14 }}>
+          <div className="card-grid-4">
             {kpiTiles.map((m, i) => (
               <div key={i} className="fa-glass-kpi" style={{ borderTopColor: m.c }}>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 26, fontWeight: 700, color: m.c, lineHeight: 1, marginBottom: 6 }}>{m.v}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>{m.l}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 700, color: m.c, lineHeight: 1, marginBottom: 6 }}>{m.v}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', lineHeight: 1.45 }}>{m.l}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
+      {/* ── FY26 Executive Highlights ── */}
+      <section className="section alt" id="fa-highlights">
+        <div className="section-tag">F&A · Section 01</div>
+        <h2 className="section-title">Executive <span>Snapshot</span></h2>
+        <p className="section-subtitle">FY26 performance highlights — closure excellence, digital delivery, automation, analytics and recognition.</p>
+        <div className="highlight-grid">
+          {fy26Highlights.map((h, i) => {
+            const Icon = h.icon;
+            return (
+              <div key={i} className="highlight-card">
+                <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div className={`card-icon ${h.variant}`} style={{ flexShrink: 0 }}><Icon size={17} /></div>
+                  <div>
+                    <div className="card-title" style={{ fontSize: 14, marginBottom: 6 }}>{h.title}</div>
+                    <div className="card-text">{h.text}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ── Section 2: Transformation Highlights FY26 ── */}
       <section className="section" id="fa-transform">
@@ -320,22 +340,27 @@ export default function FASection() {
         </div>
       </section>
 
-      {/* ── Section 7: Analytics ── */}
+      {/* ── Section 7: Analytics── */}
       <section className="section alt" id="fa-roadmap">
         <div className="section-tag">F&A · Section 07</div>
-        <h2 className="section-title">F&A <span>Analytics</span></h2>
-        <p className="section-subtitle">TBI Tracking Dashboard — data updated 6/3/26.</p>
-        <div style={{
-          borderRadius: 'var(--radius-lg)',
-          overflow: 'hidden',
-          border: '1px solid var(--border)',
-          boxShadow: 'var(--shadow-md)',
-        }}>
-          <img
-            src="/faanalytics.jpg"
-            alt="TBI Tracking Dashboard"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
+        <h2 className="section-title">Analytics</h2>
+        <p className="section-subtitle">Three-phase journey from automation foundation to autonomous, advisory finance intelligence.</p>
+        <div className="phase-grid">
+          {roadmapPhases.map((p, i) => (
+            <div key={i} className={`phase-card ${p.cls}`}>
+              <div className="phase-header">
+                <div className="phase-number">{p.num}</div>
+                <div className="phase-title">{p.title}</div>
+                <div className="phase-time">{p.time}</div>
+              </div>
+              <div className="phase-body">
+                {p.items.map((item, j) => (
+                  <div key={j} className="phase-item"><span className="phase-dot" />{item}</div>
+                ))}
+                <div className="phase-impact">{p.impact}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

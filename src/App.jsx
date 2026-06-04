@@ -8,16 +8,16 @@ import TransformAutomation from './components/TransformAutomation';
 import CWIPIntelligence from './components/CWIPIntelligence';
 import CWIPAnalytics from './components/CWIPAnalytics';
 import FASection from './components/FASection';
+import FAIntro from './components/FAIntro';
 
 const sectionIds = [
-  'hero', 'highlights', 'focus', 'transform',
-  'cwip', 'analytics',
-  'fa-hero', 'fa-highlights', 'fa-transform', 'fa-focus', 'fa-heatmap',
-  'fa-trends', 'fa-risks', 'fa-roadmap', 'fa-takeaway',
+  'fa-intro', 'fa-hero', 'fa-transform', 'fa-roadmap', 'fa-heatmap',
+  'fa-trends', 'fa-risks', 'fa-takeaway',
+  'hero', 'highlights', 'focus', 'transform', 'cwip', 'analytics',
 ];
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('fa-hero');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,14 +41,8 @@ export default function App() {
       <div style={{ display: 'flex' }}>
         <Sidebar active={activeSection} />
         <main className="main-content">
-          <Hero />
-          <Highlights />
-          <FY27Focus />
-          <TransformAutomation />
-          <CWIPIntelligence />
-          <CWIPAnalytics />
 
-          {/* F&A Divider */}
+          {/* ── F&A Section first ── */}
           <div style={{ background: 'linear-gradient(90deg, var(--telkom-blue), var(--cyan), var(--telkom-blue))', height: 4 }} />
           <div style={{ background: 'var(--telkom-blue)', padding: '16px 48px', display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, color: '#fff', letterSpacing: 2 }}>
@@ -58,10 +52,30 @@ export default function App() {
               Executive Business Review · May/June 2026
             </div>
           </div>
+          <FAIntro />
           <FASection />
 
+          {/* ── Divider ── */}
+          <div style={{ background: 'linear-gradient(90deg, var(--telkom-blue), var(--cyan), var(--telkom-blue))', height: 4 }} />
+          <div style={{ background: 'var(--telkom-blue)', padding: '16px 48px', display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, color: '#fff', letterSpacing: 2 }}>
+              PROJECT ACCOUNTING & ASSET MANAGEMENT
+            </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'rgba(255,255,255,0.6)', letterSpacing: 2, textTransform: 'uppercase' }}>
+              Executive Business Review · June 2026
+            </div>
+          </div>
+
+          {/* ── CWIP Sections ── */}
+          <Hero />
+          <Highlights />
+          <FY27Focus />
+          <TransformAutomation />
+          <CWIPIntelligence />
+          <CWIPAnalytics />
+
           <footer className="app-footer">
-            <div className="footer-left">WNS Global Services (Part of Capgemini) · Telkom Shared Services · Project Accounting & AM EBR · June 2026</div>
+            <div className="footer-left">WNS Global Services (Part of Capgemini) · Telkom Shared Services · EBR · June 2026</div>
             <div className="footer-right">CONFIDENTIAL</div>
           </footer>
         </main>
