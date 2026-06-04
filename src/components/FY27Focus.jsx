@@ -3,9 +3,9 @@ import {
 } from 'lucide-react';
 
 const focusAreas = [
-  { icon: Target,     num: '01', title: 'Support Smart Capex Deployment',         text: 'Back capital planning decisions with analytics across all BUs.', accent: 'var(--telkom-blue)' },
+  { icon: Target,     num: '01', title: 'Support Smart Capex Deployment',         text: 'Back capital planning decisions and deployment with capex management and analytics across all BUs.', accent: 'var(--telkom-blue)' },
   { icon: TrendingUp, num: '02', title: 'Improve Mobile Capital Conversion',       text: 'Drive further CCR improvement through enhanced execution oversight.', accent: 'var(--cyan)' },
-  { icon: ArrowDown,  num: '03', title: 'Reduce Mobile PMO FNLD',                  text: 'Further reduce FNLD balance through improved carry-over governance.', accent: 'var(--telkom-dark)' },
+  { icon: ArrowDown,  num: '03', title: 'Reduce Mobile PMO FNLD',                  text: 'Further reduce FNLD balance through enhanced project rendering.', accent: 'var(--telkom-dark)' },
   { icon: Wifi,       num: '04', title: 'Expand Electronic Verification',          text: 'Extend to Metro Ethernet and POTN in FY27 verification cycle.', accent: 'var(--green)' },
   { icon: Scissors,   num: '05', title: 'Accelerated Depreciation Identification', text: 'Identify opportunities supporting the Network Simplification programme.', accent: 'var(--gold)' },
   { icon: Cpu,        num: '06', title: 'Drive Digital Transformation',            text: 'Digital interventions across all AM & Project Accounting workstreams.', accent: 'var(--telkom-blue)' },

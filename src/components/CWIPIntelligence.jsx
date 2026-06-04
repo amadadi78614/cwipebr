@@ -18,11 +18,10 @@ const flowStages = [
       'Daily-refreshed AUC model with multi-year opening balances per BU',
       'Actuals vs spend plan tracking across all capital programmes',
       'Project-on-hold analytics — reason categorisation and exposure visibility',
-      '2,847+ projects in AUC lifecycle tracker · R3.2bn active AUC balance',
-      '34% electronic verification coverage · 103% execution management',
+      '34% electronic verification coverage',
+      '103% execution management',
     ],
     metrics: [
-      { v: 'R3.2bn', l: 'Active AUC' },
       { v: '34%', l: 'E-Verification' },
       { v: '103%', l: 'Execution Mgmt' },
     ],
@@ -39,13 +38,9 @@ const flowStages = [
       'F2027 IT Hardware & Software verification expansion',
       'Metro Ethernet + POTN asset verification in FY27 cycle',
       'Growth from 4 live automations toward 13 by FY28',
-      'Invoice matching, AUC posting, depreciation runs, audit trail automation',
+      
     ],
-    metrics: [
-      { v: '9', l: 'Opportunities scoped' },
-      { v: '→13', l: 'Automations by FY28' },
-      { v: '4', l: 'Live today' },
-    ],
+    metrics: []
   },
   {
     id: 'predictive',
@@ -54,18 +49,13 @@ const flowStages = [
     subtitle: 'AI-enabled capital foresight',
     accent: 'var(--gold)',
     items: [
-      'Smart CapEx — capitalisation forecasting, spend variance, FNLD risk scoring',
-      'Capex forecast, AUC lifecycle, depreciation and FNLD risk agents (future state)',
+      'Capitalisation forecast, AUC lifecycle, depreciation and FNLD risk agents (future state)',
       'Predictive AUC and Capex modelling · agentic workflow orchestration',
       'Natural language SAP PS/AA queries and scenario planning',
       'Capitalisation aligned with depreciation model and multi-BU dashboards',
       'Shift from clerical processing to strategic advisory contribution',
     ],
-    metrics: [
-      { v: 'R140m', l: 'Hold cost exposure' },
-      { v: 'R60m', l: 'Abortive recovery' },
-      { v: '78%', l: 'Execs reinventing for AI' },
-    ],
+    metrics: [],
   },
   {
     id: 'governance',
@@ -75,23 +65,18 @@ const flowStages = [
     accent: 'var(--green)',
     items: [
       'Capex approval controls, exception flagging, audit-ready documentation',
-      'Zero audit issues over programme lifecycle · 100% on-time capitalisation (8 yrs)',
-      '99.6% asset verification · Best SSC South Africa (BPeSA)',
-      '30,000 active projects · 1.2m asset lines · 20+ systems integrated',
+      'Zero audit issues over programme lifecycle · 100% on-time capitalisation',
+      '99.6% asset verification',
       'Three-phase roadmap: short-term wins → mid-term transformation → agentic Capex',
     ],
-    metrics: [
-      { v: '99.6%', l: 'Verified' },
-      { v: 'Zero', l: 'Audit issues' },
-      { v: '36', l: 'CoE projects' },
-    ],
+    metrics: [],
   },
 ];
 
 const aiMatrix = [
-  { area: 'Routine Accounting', ai: 'Automated reconciliations and period-end processing', relevance: 'SAP PS/AA — invoice matching, AUC posting, depreciation runs' },
-  { area: 'Advisory Services', ai: 'Predictive analytics and executive dashboards', relevance: 'Smart CapEx, capitalisation forecasting, FNLD risk scoring' },
-  { area: 'Risk Management', ai: 'Real-time anomaly detection and approval controls', relevance: 'Capex approval controls, exception flagging, audit trails' },
+  { area: 'Routine Accounting', ai: 'Automated reconciliations and period-end processing', relevance: 'SAP PS/AA — Direct automation target' },
+  { area: 'Advisory Services', ai: 'Predictive analytics and executive dashboards', relevance: 'Smart CapEx, capitalisation forecasting' },
+  { area: 'Risk Management', ai: 'Real-time anomaly detection', relevance: 'Capex approval controls, exception flagging, audit trails' },
   { area: 'Cloud / ERP', ai: 'Unified AI-native platforms integrated with ERPs', relevance: 'SAP ECC 6.0 + AI layer — legacy to modern intelligence bridge' },
   { area: 'Talent Utilisation', ai: 'Strategic contribution over clerical processing', relevance: 'WNS upskilling — project accountants as capital advisors' },
 ];
@@ -104,7 +89,7 @@ const roadmapPhases = [
     items: ['AI analytics for project variables', 'Real-time progress dashboards', 'Automated capitalisation checks', 'Cross-module SAP integration PS, MM, FI, AA'],
     impact: 'Consistency, reduced manual judgment, audit readiness' },
   { cls: 'p3', num: 'Phase 03', title: 'Strategic Advantage', time: '3–5 Years',
-    items: ['Agentic AI for end-to-end Capex workflows', 'Real-time finance function', 'Integrated capital strategy advisory', 'ESG reporting leadership'],
+    items: ['Agentic AI for end-to-end Capex workflows', 'Real-time finance function', 'Integrated capital strategy advisory', 'AI to meet evolving international standards seamlessly'],
     impact: 'Competitive differentiation and corporate influence' },
 ];
 

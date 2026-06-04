@@ -2,45 +2,45 @@
   "hash": "d645a0a4",
   "configHash": "027c97a2",
   "lockfileHash": "a187d112",
-  "browserHash": "55202bf4",
+  "browserHash": "49bda143",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "c868e665",
+      "fileHash": "d45de4ff",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "dcf1a603",
+      "fileHash": "6c6c7016",
       "needsInterop": true
-    },
-    "lucide-react": {
-      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
-      "file": "lucide-react.js",
-      "fileHash": "0d6ae421",
-      "needsInterop": false
     },
     "react-chartjs-2": {
       "src": "../../node_modules/react-chartjs-2/dist/index.js",
       "file": "react-chartjs-2.js",
-      "fileHash": "79d5aead",
+      "fileHash": "41d505cb",
       "needsInterop": false
     },
     "chart.js": {
       "src": "../../node_modules/chart.js/dist/chart.js",
       "file": "chart__js.js",
-      "fileHash": "049e91c4",
+      "fileHash": "ffc4a9e2",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "f5d75a1c",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-TWJRYSII": {
-      "file": "chunk-TWJRYSII.js"
-    },
     "chunk-R5T4AUMD": {
       "file": "chunk-R5T4AUMD.js"
+    },
+    "chunk-TWJRYSII": {
+      "file": "chunk-TWJRYSII.js"
     },
     "chunk-DC5AMYBS": {
       "file": "chunk-DC5AMYBS.js"

@@ -21,9 +21,9 @@ const highlights = [
     metricLabel: 'FNLD Position',
     numClass: '',
     title: 'Mobile PMO FNLD Reduced',
-    text: 'Mobile PMO FNLD reduced from R684m to R433m through focused project execution tracking and carry-over management.',
+    text: 'Mobile PMO FNLD reduced from R684m to R433m through focused project execution tracking.',
     status: 'Delivered',
-    impact: 'Risk Reduction',
+    impact: 'Process Improvement',
     impactClass: 'impact-risk',
   },
   {
@@ -67,7 +67,7 @@ const highlights = [
     title: 'Project Execution Management',
     text: 'Project execution management improved through daily tracking disciplines — achieving 103% for the period.',
     status: 'Delivered',
-    impact: 'Cost Optimisation',
+    impact: 'Efficiency',
     impactClass: 'impact-cost',
   },
   {
@@ -76,7 +76,7 @@ const highlights = [
     metricLabel: 'Closure',
     numClass: '',
     title: 'Exceptional Teamwork',
-    text: 'Successful closure of capital programmes through exceptional teamwork and collaboration with Business Units across all regions.',
+    text: 'Successful closure of capitalisation financial year-end through exceptional teamwork and collaboration with Business Units across all regions.',
     status: 'Delivered',
     impact: 'Compliance',
     impactClass: 'impact-compliance',
@@ -97,40 +97,7 @@ const metricsStrip = [
   { key: 'governance', label: 'Governance Improvements', value: 'Enhanced', sub: 'Controls and verification strengthened', icon: TrendingUp },
 ];
 
-const initiativePortfolio = [
-  {
-    name: 'Capex Data Extraction for AUC Management',
-    objective: 'Automate AUC data extraction and scheduled reporting across capital programmes',
-    status: 'In Test',
-    statusClass: 'tag-test',
-    value: 'Cuts TAT on AUC reporting; frees SMEs for strategic capital advisory work',
-    risk: 'Full rollout dependency on SAP extract stability and monitoring cadence',
-  },
-  {
-    name: 'Carry-over Funding',
-    objective: 'Enable automated budget alignment and funding for carry-over projects',
-    status: 'On Hold',
-    statusClass: 'tag-hold',
-    value: 'Reduces manual SME effort on sequential funding transactions',
-    risk: 'Client implemented alternate solution — revisit integration path',
-  },
-  {
-    name: 'Electronic Asset Verification',
-    objective: 'National electronic verification via SAP custom transaction and bots',
-    status: 'Live',
-    statusClass: 'tag-live',
-    value: 'Supports 99.6% verification; improves real-time visibility; reduces verification resources',
-    risk: 'FY27 expansion to Metro Ethernet and POTN requires custodian engagement',
-  },
-  {
-    name: 'Project AUC Life Cycle Analytics',
-    objective: 'Operationalise daily-refreshed AUC intelligence with BU-level opening balances',
-    status: 'Go-Live Ready',
-    statusClass: 'tag-ready',
-    value: 'Full operational CWIP visibility; executive-grade lifecycle tracking',
-    risk: 'Q1 production cutover — data accuracy validation across all BU segments',
-  },
-];
+
 
 export default function Highlights() {
   return (
@@ -188,39 +155,6 @@ export default function Highlights() {
         ))}
       </div>
 
-      {/* ── Portfolio unchanged ── */}
-      <div className="portfolio-section">
-        <div className="portfolio-header">
-          <div>
-            <div className="portfolio-eyebrow">Executive Transformation Portfolio</div>
-            <h3 className="portfolio-title">Automation & Digital Initiatives</h3>
-            <p className="portfolio-sub">Boardroom view of active initiatives — objectives, progress, value and dependencies at a glance.</p>
-          </div>
-        </div>
-        <div className="portfolio-grid">
-          {initiativePortfolio.map((item, i) => (
-            <article key={i} className="portfolio-card">
-              <div className="portfolio-card-top">
-                <span className={`card-tag ${item.statusClass}`}>{item.status}</span>
-                <span className="portfolio-index">{String(i + 1).padStart(2, '0')}</span>
-              </div>
-              <h4 className="portfolio-card-name">{item.name}</h4>
-              <div className="portfolio-field">
-                <span className="portfolio-label">Business objective</span>
-                <p>{item.objective}</p>
-              </div>
-              <div className="portfolio-field">
-                <span className="portfolio-label">Expected value</span>
-                <p>{item.value}</p>
-              </div>
-              <div className="portfolio-field portfolio-field-risk">
-                <span className="portfolio-label">Risk / dependency</span>
-                <p>{item.risk}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }

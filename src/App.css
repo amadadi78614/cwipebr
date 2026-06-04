@@ -208,6 +208,9 @@ body {
   margin-top: 56px;
   flex: 1;
   min-width: 0;
+  overflow-x: hidden;
+  width: 0; /* forces flex child not to blow out */
+  flex-grow: 1;
 }
 
 /* ============================================================
