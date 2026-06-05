@@ -116,48 +116,77 @@ export default function CWIPAnalytics() {
             </div>
           </div>
 
-          {/* Tree — pixel-faithful to Power BI screenshot */}
-          <div style={{ display:'flex', gap:0, width:'100%', minWidth:0 }}>
+          {/* Tree — matches screenshot layout exactly */}
+          <div style={{ display:'flex', flexDirection:'column', width:'100%', minWidth:0, gap:0 }}>
 
-            {/* LEFT COLUMN: vertical spine */}
-            <div style={{ display:'flex', flexDirection:'column', alignItems:'center', width:120, flexShrink:0 }}>
-              <Node label="Cwip Total" value={d.cwip.toFixed(1)} />
-              <VLine h={16} />
-              <Dot />
-              <VLine h={16} />
-              <Node label="AUC Total" value={d.auc.toFixed(1)} />
-              <VLine h={16} />
-              <Dot />
-              <VLine h={16} />
-              <Node label="Active AUC" value={d.activeAuc.toFixed(1)} />
-            </div>
-
-            {/* CONNECTORS */}
-            <div style={{ display:'flex', flexDirection:'column', width:14, flexShrink:0 }}>
-              {/* align with FNLD row */}
-              <div style={{ flex:'0 0 32px', display:'flex', alignItems:'center' }}><HLine w={14} /></div>
-              {/* align with Hold row */}
-              <div style={{ flex:'0 0 68px', display:'flex', alignItems:'center' }}><HLine w={14} /></div>
-              {/* align with Within row */}
-              <div style={{ flex:'0 0 68px', display:'flex', alignItems:'center' }}><HLine w={14} /></div>
-            </div>
-
-            {/* RIGHT COLUMN */}
-            <div style={{ display:'flex', flexDirection:'column', flex:1, minWidth:0, gap:8 }}>
-              {/* FNLD + Build Ready */}
-              <div style={{ display:'flex', gap:8 }}>
-                <Node label={"Built – Not Ready\nfor Capitalisation"} value={d.fnld.toFixed(1)} />
-                <Node label={"Built – Ready for\nCapitalisation"} value={d.buildReady.toFixed(1)} />
+            {/* Row 1: CWIP Total (left) + FNLD + Build Ready (right) */}
+            <div style={{ display:'flex', alignItems:'stretch', gap:8 }}>
+              {/* CWIP Total */}
+              <div style={{ display:'flex', flexDirection:'column', alignItems:'center', width:110, flexShrink:0 }}>
+                <Node label="Cwip Total" value={d.cwip.toFixed(1)} />
+                <VLine h={16} />
+                <Dot />
               </div>
-              {/* Build in Hold + Build in Plan */}
-              <div style={{ display:'flex', gap:8 }}>
+              <HLine w={12} />
+              {/* FNLD + Build Ready */}
+              <div style={{ display:'flex', gap:8, flex:1 }}>
+                <Node label={"Built – Not Ready\nfor Capitalisation"} value={d.fnld.toFixed(1)} />
+                <Node label={"Built – Ready for\nCapitalisation"}      value={d.buildReady.toFixed(1)} />
+              </div>
+            </div>
+
+            {/* Connector to AUC Total */}
+            <div style={{ display:'flex', marginLeft:116, alignItems:'center', margin:'3px 0 3px 116px' }}>
+              <Dot /><HLine w={10} />
+            </div>
+
+            {/* Row 2: AUC Total — full width of right column */}
+            <div style={{ display:'flex', gap:8 }}>
+              <div style={{ width:110, flexShrink:0 }} />
+              <HLine w={12} />
+              <div style={{ flex:1 }}>
+                <Node label="AUC Total" value={d.auc.toFixed(1)} />
+              </div>
+            </div>
+
+            {/* Connector + Hold/Plan */}
+            <div style={{ display:'flex', marginLeft:'122px', alignItems:'center', margin:'3px 0 3px 122px' }}>
+              <VLine h={12} />
+            </div>
+            <div style={{ display:'flex', gap:8 }}>
+              <div style={{ width:110, flexShrink:0 }} />
+              <HLine w={12} />
+              <div style={{ display:'flex', gap:8, flex:1 }}>
                 <Node label="Build in Hold" value={d.hold.toFixed(1)} />
                 <Node label="Build in Plan"  value={d.plan.toFixed(1)} />
               </div>
-              {/* Within Duration — full width */}
-              <Node label="Within Duration" value={d.withinDur.toFixed(1)} />
-              {/* Exceeding Duration — full width */}
-              <Node label="Exceeding Duration" value={d.exceedDur.toFixed(1)} />
+            </div>
+
+            {/* Connector to Active AUC */}
+            <div style={{ display:'flex', alignItems:'center', margin:'3px 0 3px 122px' }}>
+              <Dot /><HLine w={10} />
+            </div>
+
+            {/* Row 3: Active AUC — full width */}
+            <div style={{ display:'flex', gap:8 }}>
+              <div style={{ width:110, flexShrink:0 }} />
+              <HLine w={12} />
+              <div style={{ flex:1 }}>
+                <Node label="Active AUC" value={d.activeAuc.toFixed(1)} />
+              </div>
+            </div>
+
+            {/* Connector + Within/Exceeding */}
+            <div style={{ display:'flex', margin:'3px 0 3px 122px' }}>
+              <VLine h={12} />
+            </div>
+            <div style={{ display:'flex', gap:8 }}>
+              <div style={{ width:110, flexShrink:0 }} />
+              <HLine w={12} />
+              <div style={{ display:'flex', gap:8, flex:1 }}>
+                <Node label="Within Duration"    value={d.withinDur.toFixed(1)} />
+                <Node label="Exceeding Duration" value={d.exceedDur.toFixed(1)} />
+              </div>
             </div>
 
           </div>

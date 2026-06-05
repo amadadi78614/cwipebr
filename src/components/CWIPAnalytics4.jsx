@@ -119,30 +119,34 @@ export default function CWIPAnalytics() {
           {/* Tree — pixel-faithful to Power BI screenshot */}
           <div style={{ display:'flex', gap:0, width:'100%', minWidth:0 }}>
 
-            {/* LEFT COLUMN: vertical spine */}
+            {/* LEFT COLUMN: CWIP Total → AUC Total → Active AUC (vertical spine) */}
             <div style={{ display:'flex', flexDirection:'column', alignItems:'center', width:120, flexShrink:0 }}>
               <Node label="Cwip Total" value={d.cwip.toFixed(1)} />
-              <VLine h={16} />
+              <VLine h={12} />
               <Dot />
-              <VLine h={16} />
+              <VLine h={12} />
+              {/* spacer to align with FNLD row height */}
+              <div style={{ height: 10 }} />
               <Node label="AUC Total" value={d.auc.toFixed(1)} />
-              <VLine h={16} />
+              <VLine h={12} />
               <Dot />
-              <VLine h={16} />
+              <VLine h={12} />
+              {/* spacer to align with Hold row */}
+              <div style={{ height: 10 }} />
               <Node label="Active AUC" value={d.activeAuc.toFixed(1)} />
             </div>
 
-            {/* CONNECTORS */}
-            <div style={{ display:'flex', flexDirection:'column', width:14, flexShrink:0 }}>
-              {/* align with FNLD row */}
-              <div style={{ flex:'0 0 32px', display:'flex', alignItems:'center' }}><HLine w={14} /></div>
-              {/* align with Hold row */}
-              <div style={{ flex:'0 0 68px', display:'flex', alignItems:'center' }}><HLine w={14} /></div>
-              {/* align with Within row */}
-              <div style={{ flex:'0 0 68px', display:'flex', alignItems:'center' }}><HLine w={14} /></div>
+            {/* CONNECTOR column */}
+            <div style={{ display:'flex', flexDirection:'column', justifyContent:'flex-start', paddingTop:0, gap:0 }}>
+              {/* Connector from CWIP Total → FNLD row */}
+              <div style={{ height:32, display:'flex', alignItems:'flex-end' }}><HLine w={14} /></div>
+              {/* Connector from AUC Total → Hold row */}
+              <div style={{ height:80, display:'flex', alignItems:'center' }}><HLine w={14} /></div>
+              {/* Connector from Active AUC → Duration row */}
+              <div style={{ height:80, display:'flex', alignItems:'center' }}><HLine w={14} /></div>
             </div>
 
-            {/* RIGHT COLUMN */}
+            {/* RIGHT COLUMN: siblings */}
             <div style={{ display:'flex', flexDirection:'column', flex:1, minWidth:0, gap:8 }}>
               {/* FNLD + Build Ready */}
               <div style={{ display:'flex', gap:8 }}>
@@ -154,10 +158,11 @@ export default function CWIPAnalytics() {
                 <Node label="Build in Hold" value={d.hold.toFixed(1)} />
                 <Node label="Build in Plan"  value={d.plan.toFixed(1)} />
               </div>
-              {/* Within Duration — full width */}
-              <Node label="Within Duration" value={d.withinDur.toFixed(1)} />
-              {/* Exceeding Duration — full width */}
-              <Node label="Exceeding Duration" value={d.exceedDur.toFixed(1)} />
+              {/* Within Duration + Exceeding Duration — stacked vertically like screenshot */}
+              <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
+                <Node label="Within Duration"    value={d.withinDur.toFixed(1)} />
+                <Node label="Exceeding Duration" value={d.exceedDur.toFixed(1)} />
+              </div>
             </div>
 
           </div>
