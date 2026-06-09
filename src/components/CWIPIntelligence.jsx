@@ -18,10 +18,11 @@ const flowStages = [
       'Daily-refreshed AUC model with multi-year opening balances per BU',
       'Actuals vs spend plan tracking across all capital programmes',
       'Project-on-hold analytics — reason categorisation and exposure visibility',
-      '34% electronic verification coverage',
-      '103% execution management',
+      '2,847+ projects in AUC lifecycle tracker · R3.2bn active AUC balance',
+      '34% electronic verification coverage · 103% execution management',
     ],
     metrics: [
+      { v: 'R3.2bn', l: 'Active AUC' },
       { v: '34%', l: 'E-Verification' },
       { v: '103%', l: 'Execution Mgmt' },
     ],
@@ -38,9 +39,13 @@ const flowStages = [
       'F2027 IT Hardware & Software verification expansion',
       'Metro Ethernet + POTN asset verification in FY27 cycle',
       'Growth from 4 live automations toward 13 by FY28',
-      
+      'Invoice matching, AUC posting, depreciation runs, audit trail automation',
     ],
-    metrics: []
+    metrics: [
+      { v: '9', l: 'Opportunities scoped' },
+      { v: '→13', l: 'Automations by FY28' },
+      { v: '4', l: 'Live today' },
+    ],
   },
   {
     id: 'predictive',
@@ -49,13 +54,18 @@ const flowStages = [
     subtitle: 'AI-enabled capital foresight',
     accent: 'var(--gold)',
     items: [
-      'Capitalisation forecast, AUC lifecycle, depreciation and FNLD risk agents (future state)',
+      'Smart CapEx — capitalisation forecasting, spend variance, FNLD risk scoring',
+      'Capex forecast, AUC lifecycle, depreciation and FNLD risk agents (future state)',
       'Predictive AUC and Capex modelling · agentic workflow orchestration',
       'Natural language SAP PS/AA queries and scenario planning',
       'Capitalisation aligned with depreciation model and multi-BU dashboards',
       'Shift from clerical processing to strategic advisory contribution',
     ],
-    metrics: [],
+    metrics: [
+      { v: 'R140m', l: 'Hold cost exposure' },
+      { v: 'R60m', l: 'Abortive recovery' },
+      { v: '78%', l: 'Execs reinventing for AI' },
+    ],
   },
   {
     id: 'governance',
@@ -65,8 +75,9 @@ const flowStages = [
     accent: 'var(--green)',
     items: [
       'Capex approval controls, exception flagging, audit-ready documentation',
-      'Zero audit issues over programme lifecycle · 100% on-time capitalisation',
-      '99.6% asset verification',
+      'Zero audit issues over programme lifecycle · 100% on-time capitalisation (8 yrs)',
+      '99.6% asset verification · Best SSC South Africa (BPeSA)',
+      '30,000 active projects · 1.2m asset lines · 20+ systems integrated',
       'Three-phase roadmap: short-term wins → mid-term transformation → agentic Capex',
     ],
     metrics: [],

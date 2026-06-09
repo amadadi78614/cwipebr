@@ -23,7 +23,7 @@ const engineRows = [
     initiative: 'Electronic Asset Verification',
     processArea: 'Asset Management & Verification',
     lever: 'SAP Custom Transaction + RPA',
-    impact: 'Powering to achieve 99.6% verification. Alleviate verification resources, as well as having more up-to-date statuses',
+    impact: '99.6% verification support; real-time national status; resource reduction',
     status: 'Live',
     statusClass: 'tag-live',
     icon: CheckCircle,
@@ -42,8 +42,8 @@ const engineRows = [
 const summaryTiles = [
   { v: '4', l: 'Engine initiatives tracked', c: 'var(--telkom-blue)' },
   { v: '2', l: 'Live in production', c: 'var(--green)' },
-  { v: '34%', l: 'Enabled Automated matching', c: 'var(--telkom-blue)' },
- 
+  { v: '99.6%', l: 'Asset verification achieved', c: 'var(--telkom-blue)' },
+  { v: '>26%', l: 'TAT improvement on key processes', c: 'var(--gold)' },
 ];
 
 export default function TransformAutomation() {

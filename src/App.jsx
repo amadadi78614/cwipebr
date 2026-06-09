@@ -9,64 +9,54 @@ import CWIPIntelligence from './components/CWIPIntelligence';
 import CWIPAnalytics from './components/CWIPAnalytics';
 import FASection from './components/FASection';
 import FAIntro from './components/FAIntro';
+import HROSection from './components/HROSection';
 
 const sectionIds = [
-  'fa-intro', 'fa-hero', 'fa-transform', 'fa-roadmap', 'fa-heatmap',
-  'fa-trends', 'fa-risks', 'fa-takeaway',
-  'hero', 'highlights', 'focus', 'transform', 'cwip', 'analytics',
+  'hro-intro','hro-highlights','hro-focus','hro-trends','hro-risks','hro-ai','hro-platforms','hro-takeaway',
+  'fa-intro','fa-hero','fa-transform','fa-roadmap','fa-heatmap','fa-trends','fa-risks','fa-takeaway',
+  'hero','highlights','focus','transform','cwip','analytics',
 ];
 
+const Divider = ({ label, sub }) => (
+  <>
+    <div style={{ background:'linear-gradient(90deg,var(--telkom-blue),var(--cyan),var(--telkom-blue))', height:4 }} />
+    <div style={{ background:'var(--telkom-blue)', padding:'16px 48px', display:'flex', alignItems:'center', gap:16 }}>
+      <div style={{ fontFamily:'var(--font-display)', fontSize:22, fontWeight:700, color:'#fff', letterSpacing:2 }}>{label}</div>
+      <div style={{ fontFamily:'var(--font-mono)', fontSize:10, color:'rgba(255,255,255,0.6)', letterSpacing:2, textTransform:'uppercase' }}>{sub}</div>
+    </div>
+  </>
+);
+
 export default function App() {
-  const [activeSection, setActiveSection] = useState('fa-hero');
+  const [activeSection, setActiveSection] = useState('hro-intro');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      (entries) => { entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); }); },
+      { rootMargin:'-20% 0px -70% 0px', threshold:0 }
     );
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    sectionIds.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
     return () => observer.disconnect();
   }, []);
 
   return (
     <div className="app-wrapper">
       <TopBar />
-      <div style={{ display: 'flex' }}>
+      <div style={{ display:'flex' }}>
         <Sidebar active={activeSection} />
         <main className="main-content">
 
-          {/* ── F&A Section first ── */}
-          <div style={{ background: 'linear-gradient(90deg, var(--telkom-blue), var(--cyan), var(--telkom-blue))', height: 4 }} />
-          <div style={{ background: 'var(--telkom-blue)', padding: '16px 48px', display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, color: '#fff', letterSpacing: 2 }}>
-              FINANCE & ACCOUNTING
-            </div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'rgba(255,255,255,0.6)', letterSpacing: 2, textTransform: 'uppercase' }}>
-              Executive Business Review · May/June 2026
-            </div>
-          </div>
+          {/* ── HRO ── */}
+          <Divider label="HUMAN RESOURCES OUTSOURCING" sub="Executive Business Review · May 2026" />
+          <HROSection />
+
+          {/* ── F&A ── */}
+          <Divider label="FINANCE & ACCOUNTING" sub="Executive Business Review · May/June 2026" />
           <FAIntro />
           <FASection />
 
-          {/* ── Divider ── */}
-          <div style={{ background: 'linear-gradient(90deg, var(--telkom-blue), var(--cyan), var(--telkom-blue))', height: 4 }} />
-          <div style={{ background: 'var(--telkom-blue)', padding: '16px 48px', display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, color: '#fff', letterSpacing: 2 }}>
-              PROJECT ACCOUNTING & ASSET MANAGEMENT
-            </div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'rgba(255,255,255,0.6)', letterSpacing: 2, textTransform: 'uppercase' }}>
-              Executive Business Review · June 2026
-            </div>
-          </div>
-
-          {/* ── CWIP Sections ── */}
+          {/* ── PA&AM ── */}
+          <Divider label="PROJECT ACCOUNTING & ASSET MANAGEMENT" sub="Executive Business Review · June 2026" />
           <Hero />
           <Highlights />
           <FY27Focus />

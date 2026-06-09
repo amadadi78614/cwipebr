@@ -11,7 +11,7 @@ const phases = [
     items:['AI and analytics for project variables','Track complex projects across vendors and sites','Real-time project progress dashboards','Automated capitalisation checks','Cross-module SAP integration: PS, MM, FI, AA','Audit and traceability automation'],
     impact:'Consistency, reduced manual judgment, enhanced audit readiness' },
   { cls:'p3', num:'Phase 03', title:'Long-Term Strategic Advantage', time:'3–5 Years',
-    items:['Agentic AI for end-to-end Capex workflows','Real-time finance function','Integrated advisory model for capital strategy','AI to meet evolving international standards seamlessly','Human oversight as strategic safety net'],
+    items:['Agentic AI for end-to-end Capex workflows','Real-time finance function','Integrated advisory model for capital strategy','ESG reporting and compliance leadership','Human oversight as strategic safety net'],
     impact:'Competitive differentiation and stronger corporate influence' },
 ];
 
