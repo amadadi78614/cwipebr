@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {ArrowUpRight,ArrowRight,Check,Clock,Layers,TrendingUp,Database,ShieldCheck,ScanLine,ChartNoAxesCombined,PauseCircle,FileCheck2,Lightbulb,X,ChevronDown,Wallet,Workflow,Target} from 'lucide-react';
+import {ArrowUpRight,ArrowRight,Check,Clock,Layers,TrendingUp,Database,ShieldCheck,ScanLine,BarChart2,PauseCircle,FileCheck2,Lightbulb,X,ChevronDown,Wallet,Workflow,Target} from 'lucide-react';
 import FASection from './components/FASection';
 import FAIntro from './components/FAIntro';
 import CWIPAnalytics from './components/CWIPAnalytics';
@@ -8,7 +8,7 @@ const agents=[
  ['Capex forecast',TrendingUp,'Anticipate capitalisation','SAP PS history, spend plans and milestones','Capitalisation timing and variance scenarios','Forecast accuracy'],
  ['AUC lifecycle',Layers,'Spot ageing early','AUC balances, project stages and completion signals','Ageing alerts and settlement follow-up','Ageing reduction'],
  ['Asset verification',ScanLine,'Prioritise unmatched assets','Asset register, technology records and custodian responses','Match suggestions and ranked exceptions','Match accuracy and effort'],
- ['Depreciation',ChartNoAxesCombined,'Model asset scenarios','Asset lives and network simplification data','Depreciation forecasts and review candidates','Forecast accuracy'],
+ ['Depreciation',BarChart2,'Model asset scenarios','Asset lives and network simplification data','Depreciation forecasts and review candidates','Forecast accuracy'],
  ['FNLD risk',ShieldCheck,'Flag emerging project risk','Project status, funding and carry-over history','Risk-ranked projects and early warnings','Warning precision'],
  ['Projects on hold',PauseCircle,'Focus resolution effort','Hold reasons, vendor issues and funding constraints','Classified hold reasons and recommended follow-up','Resolution time'],
  ['Capex governance',FileCheck2,'Surface control exceptions','Approval rules, policies and audit requirements','Policy flags with supporting evidence','Control coverage'],
