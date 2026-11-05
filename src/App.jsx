@@ -1,75 +1,41 @@
-import { useState, useEffect } from 'react';
-import TopBar from './components/TopBar';
-import Sidebar from './components/Sidebar';
-import Hero from './components/Hero';
-import Highlights from './components/Highlights';
-import FY27Focus from './components/FY27Focus';
-import TransformAutomation from './components/TransformAutomation';
-import CWIPIntelligence from './components/CWIPIntelligence';
-import CWIPAnalytics from './components/CWIPAnalytics';
+import { useState } from 'react';
 import FASection from './components/FASection';
 import FAIntro from './components/FAIntro';
 import HROSection from './components/HROSection';
+import CWIPAnalytics from './components/CWIPAnalytics';
 
-const sectionIds = [
-  'hro-intro','hro-highlights','hro-focus','hro-trends','hro-risks','hro-ai','hro-platforms','hro-takeaway',
-  'fa-intro','fa-hero','fa-transform','fa-roadmap','fa-heatmap','fa-trends','fa-risks','fa-takeaway',
-  'hero','highlights','focus','transform','cwip','analytics',
+const tabs = [['overview','Executive overview'],['cwip','CWIP & Asset Management'],['finance','Finance & Accounting'],['hro','HRO']];
+const priorities = [
+ ['Capital conversion','50%','69%','19 percentage points to H2 focus level. Confirm the milestone date against the monthly target curve.'],
+ ['Asset verification','97%','Complete cycle','Close the remaining verification work for the second-year cycle.'],
+ ['Electronic verification','59%','Expand coverage','Extend to additional technologies and resolve custodian dependencies.'],
 ];
-
-const Divider = ({ label, sub }) => (
-  <>
-    <div style={{ background:'linear-gradient(90deg,var(--telkom-blue),var(--cyan),var(--telkom-blue))', height:4 }} />
-    <div style={{ background:'var(--telkom-blue)', padding:'16px 48px', display:'flex', alignItems:'center', gap:16 }}>
-      <div style={{ fontFamily:'var(--font-display)', fontSize:22, fontWeight:700, color:'#fff', letterSpacing:2 }}>{label}</div>
-      <div style={{ fontFamily:'var(--font-mono)', fontSize:10, color:'rgba(255,255,255,0.6)', letterSpacing:2, textTransform:'uppercase' }}>{sub}</div>
-    </div>
-  </>
-);
-
-export default function App() {
-  const [activeSection, setActiveSection] = useState('hro-intro');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => { entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); }); },
-      { rootMargin:'-20% 0px -70% 0px', threshold:0 }
-    );
-    sectionIds.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div className="app-wrapper">
-      <TopBar />
-      <div style={{ display:'flex' }}>
-        <Sidebar active={activeSection} />
-        <main className="main-content">
-
-          {/* ── HRO ── */}
-          <Divider label="HUMAN RESOURCES OUTSOURCING" sub="Executive Business Review · May 2026" />
-          <HROSection />
-
-          {/* ── F&A ── */}
-          <Divider label="FINANCE & ACCOUNTING" sub="Executive Business Review · May/June 2026" />
-          <FAIntro />
-          <FASection />
-
-          {/* ── PA&AM ── */}
-          <Divider label="PROJECT ACCOUNTING & ASSET MANAGEMENT" sub="Executive Business Review · June 2026" />
-          <Hero />
-          <Highlights />
-          <FY27Focus />
-          <TransformAutomation />
-          <CWIPIntelligence />
-          <CWIPAnalytics />
-
-          <footer className="app-footer">
-            <div className="footer-left">WNS Global Services (Part of Capgemini) · Telkom Shared Services · EBR · June 2026</div>
-            <div className="footer-right">CONFIDENTIAL</div>
-          </footer>
-        </main>
-      </div>
-    </div>
-  );
-}
+const movement = [
+ ['Electronic verification','34%','59%','+25 pp','Coverage expanded; current figure excludes cable. Scope alignment required for final comparison.'],
+ ['AUC analytics','Daily dashboard built','Enhanced daily dashboard','Advanced','Latest review reports an end-to-end review enhancement. Production sign-off is not stated.'],
+ ['Metro Ethernet & POTN','FY27 expansion planned','89% reported','Delivered progress','The latest deck reports 89% for the newly added technologies.'],
+ ['Project accountant score','103%','103%','Unchanged','Overall group result excludes BCX in the latest review.'],
+ ['Capital conversion','>74% · FY26','50% · H1 FY27','Different periods','Prior full-year and current half-year results are not a like-for-like decline.'],
+ ['Asset verification','99.6% · prior cycle','97% · current cycle','Different cycles','The current review describes its highest September achievement.'],
+];
+function Metric({label,value,note,accent}){return <article className={'ex-metric '+(accent?'ex-accent':'')}><span>{label}</span><strong>{value}</strong><p>{note}</p></article>}
+function Heading({eyebrow,title,copy}){return <div className="ex-heading"><span className="ex-eyebrow">{eyebrow}</span><h2>{title}</h2>{copy&&<p>{copy}</p>}</div>}
+function Movement(){return <section className="ex-panel"><Heading eyebrow="Since the previous review" title="Movement that matters" copy="May / June 2026 website baseline compared with the September H1 FY27 review, dated 15 October 2026."/><div className="ex-movement"><div className="ex-movement-head"><span>Measure</span><span>Previous position</span><span>Latest position</span><span>Movement / context</span></div>{movement.map(([label,old,now,delta,note])=><div className="ex-movement-row" key={label}><b>{label}</b><div><small>Previous</small>{old}</div><div className="ex-current"><small>Latest</small>{now}</div><div><em className={delta.includes('Different')?'ex-neutral':''}>{delta}</em><p>{note}</p></div></div>)}</div></section>}
+function Conversion(){return <section className="ex-panel"><Heading eyebrow="H2 delivery focus" title="Capital conversion: the next 19 points" copy="50% reported at H1 FY27. The written H2 focus is 69%; the source chart extends to a higher March target and needs reconciliation."/><div className="ex-target-line"><div><strong>50%</strong><span>H1 FY27 actual</span></div><div className="ex-target-track"><i/><span>19 percentage points</span></div><div><strong>69%</strong><span>H2 focus</span></div></div><p className="ex-note">Target gap, not a forecast. FY26 full-year performance above 74% remains a separate historical reference.</p></section>}
+function Verification(){return <section className="ex-panel"><Heading eyebrow="Digital asset controls" title="Electronic verification expands"/><div className="ex-bars">{[['Previous review',34],['H1 FY27 · excludes cable',59]].map(([l,n])=><div key={l}><label>{l}<b>{n}%</b></label><div><i style={{width:n+'%'}}/></div></div>)}</div><div className="ex-callout"><strong>+25 percentage points</strong><p>The latest review explicitly reports movement from 34% to 59%. Confirm matching asset populations before using this as a formal KPI comparison.</p></div></section>}
+function Decisions(){return <section className="ex-panel"><Heading eyebrow="Management attention" title="Actions for the next review" copy="Proposed follow-ups based on the source review. Owners and due dates have not yet been assigned."/><div className="ex-actions">{[
+ ['01','Confirm the capital conversion milestone','Reconcile the written 69% H2 focus with the monthly target curve and agree the reporting date.'],
+ ['02','Close verification and custodian dependencies','Complete the second-year cycle, prioritise asset derecognition and support Openserve copper recoveries.'],
+ ['03','Validate the executive data pack','Replace incomplete AUC balances, resolve invalid percentages and confirm the repeated spend actuals before reporting financial movement.'],
+ ].map(([n,t,c])=><article key={n}><span>{n}</span><div><h3>{t}</h3><p>{c}</p></div></article>)}</div></section>}
+function CWIP(){return <><div className="ex-kpis"><Metric label="Capital conversion" value="50%" note="H1 FY27 reported actual"/><Metric label="Opening balance capitalisation" value="66%" note="Current review; prior comparable not supplied"/><Metric label="Current verification cycle" value="97%" note="FDA asset verification reported"/><Metric label="Project accountant score" value="103%" note="Overall group, excluding BCX"/></div><div className="ex-two"><Conversion/><Verification/></div><Movement/><section className="ex-panel"><Heading eyebrow="Verification detail" title="Technology coverage"/><div className="ex-tech">{[['IT hardware','26%','CMDB · classes IL9580–IL9584'],['IT software','89%','ABACUS verification'],['Metro Ethernet & POTN','89%','New technologies included']].map(([l,v,n])=><Metric key={l} label={l} value={v} note={n}/>)}</div><p className="ex-note">MSAN/ISAM and GPON classes reported verified. Xact / Optic FTI remains exploratory; NCAS assets remain work in progress.</p></section><Decisions/><details className="ex-detail"><summary>Previous CWIP analytics · historical reference</summary><p className="ex-note">Retained from the previous website. These figures are not refreshed by the September review and must not be read as current H1 balances.</p><div className="ex-legacy"><CWIPAnalytics/></div></details></>}
+export default function App(){const [tab,setTab]=useState('overview');return <div className="ex-app"><style>{css}</style><header className="ex-top"><a href="#" aria-label="Executive overview" onClick={e=>{e.preventDefault();setTab('overview')}}><img src="/wns-logo.png" alt="WNS"/><span/><img src="/telkom-logo.png" alt="Telkom"/></a><div>Telkom Shared Services <b>Confidential</b></div></header><nav className="ex-tabs" aria-label="Business area">{tabs.map(([id,l])=><button key={id} aria-current={tab===id?'page':undefined} onClick={()=>setTab(id)}>{l}</button>)}</nav><main className="ex-main"><div className="ex-hero"><div><span className="ex-eyebrow">Executive business review</span><h1>{tab==='overview'?'Performance. Progress. Priorities.':tabs.find(t=>t[0]===tab)[1]}</h1><p>{tab==='overview'?'A clear view of delivery, movement and the actions that need management attention.':tab==='cwip'?'H1 FY27 delivery and the priorities for the second half.':'Previous review retained. A current-period update has not been supplied for this function.'}</p></div><div className="ex-period"><b>{tab==='finance'?'May / June 2026':tab==='hro'?'May 2026':'H1 FY27'}</b><span>{tab==='finance'||tab==='hro'?'Historical review':'September review'}</span><small>{tab==='finance'||tab==='hro'?'Awaiting refreshed source':'Source dated 15 October 2026'}</small></div></div>
+{tab==='overview'&&<><div className="ex-source">Latest update covers Project Accounting & Asset Management. Finance and HRO retain their earlier review dates.</div><div className="ex-kpis"><Metric label="Electronic verification" value="59%" note="From 34% · +25 pp, excludes cable" accent/><Metric label="Capital conversion" value="50%" note="H1 FY27 · 69% H2 focus"/><Metric label="Asset verification" value="97%" note="Current second-year cycle"/><Metric label="Execution score" value="103%" note="Overall group, excluding BCX"/></div><section className="ex-panel ex-brief"><span className="ex-eyebrow">Executive readout</span><h2>Verification coverage expands.<br/>Capital conversion remains the H2 priority.</h2><p>Electronic verification increased to 59%. The AUC dashboard now includes an end-to-end review. The next focus is to reach the stated 69% capital conversion level and complete the current asset verification cycle.</p><button className="ex-link" onClick={()=>setTab('cwip')}>Explore CWIP performance ↗</button></section><div className="ex-two"><Verification/><Conversion/></div><Movement/><Decisions/><section className="ex-panel"><Heading eyebrow="Review coverage" title="One review. Separate business views."/><div className="ex-areas">{[['cwip','CWIP & Asset Management','Updated · H1 FY27','Performance, verification and capitalisation.'],['finance','Finance & Accounting','Historical · May / June 2026','Prior initiatives and transformation programme.'],['hro','Human Resources Outsourcing','Historical · May 2026','Prior delivery, payroll and HR priorities.']].map(([id,l,d,c])=><button key={id} onClick={()=>setTab(id)}><small>{d}</small><h3>{l} ↗</h3><p>{c}</p></button>)}</div></section></>}
+{tab==='cwip'&&<CWIP/>}
+{(tab==='finance'||tab==='hro')&&<><div className="ex-source">Historical content. The uploaded September deck contains an AM & Project Accounting review; it does not provide a refreshed {tab==='finance'?'Finance & Accounting':'HRO'} pack.</div><section className="ex-panel"><Heading eyebrow="Previous review" title={tab==='finance'?'Finance transformation priorities':'HR and payroll priorities'}/><p>{tab==='finance'?'The earlier review focused on year-end closure, automated reporting, reconciliations, system stabilisation and analytics. Current delivery status and quantified benefits need a refreshed source.':'The earlier review covered payroll implementation support, SharePoint reconciliation, process blueprints, employee transition and FY27 system priorities. Current delivery status needs a refreshed source.'}</p></section><details className="ex-detail"><summary>Open the full previous {tab==='finance'?'Finance & Accounting':'HRO'} review</summary><div className="ex-legacy">{tab==='finance'?<><FAIntro/><FASection/></>:<HROSection/>}</div></details></>}
+<footer className="ex-foot"><span>WNS · Part of Capgemini / Telkom Shared Services</span><span>Review sources: website May–June 2026 / September H1 FY27 placemat</span></footer></main></div>}
+const css = `
+.ex-app{background:#f2f5f8;color:#122b40;min-height:100vh;font-family:Inter,Arial,sans-serif;line-height:1.5}.ex-app *{box-sizing:border-box}.ex-app button{font:inherit;cursor:pointer}.ex-top{height:88px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid #dbe3eb}.ex-top a{display:flex;align-items:center;gap:22px}.ex-top img{width:auto;max-width:140px;max-height:37px}.ex-top a span{height:30px;width:1px;background:#dbe3eb}.ex-top>div{font-size:13px;display:flex;gap:22px;align-items:center}.ex-top b{text-transform:uppercase;letter-spacing:1.5px;font-size:10px;border:1px solid #dbe3eb;border-radius:4px;padding:5px 9px}.ex-tabs{display:flex;gap:25px;padding:0 5vw;background:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid #dbe3eb;overflow:auto}.ex-tabs button{white-space:nowrap;background:none;border:0;border-bottom:3px solid transparent;padding:20px 2px;color:#5c6f7f;font-size:13px;font-weight:600}.ex-tabs button[aria-current]{border-color:#0086bc;color:#00668f}.ex-main{max-width:1500px;margin:auto;padding:45px 5vw 25px}.ex-hero{display:flex;justify-content:space-between;gap:25px;align-items:center;margin-bottom:30px}.ex-eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:2px;font-weight:700;color:#43809d}.ex-hero h1{font-size:clamp(30px,3vw,46px);line-height:1.14;letter-spacing:-1.5px;font-weight:600;margin:13px 0}.ex-hero p{font-size:14px;color:#617384;max-width:650px;margin:0}.ex-period{min-width:190px;text-align:right;border-left:1px solid #d3dfe8;padding-left:30px;display:grid;gap:3px}.ex-period b{font-size:24px;font-weight:500}.ex-period span{font-size:13px}.ex-period small{font-size:10px;color:#738596}.ex-source{font-size:12px;color:#5f7181;padding:12px 16px;border-left:3px solid #b88932;background:#fff9ed;margin:0 0 25px}.ex-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:25px}.ex-metric{background:white;border:1px solid #dae3eb;border-radius:8px;padding:23px 22px}.ex-metric>span{font-size:11px;color:#617384;display:block}.ex-metric strong{font-weight:500;font-size:42px;line-height:1.3;letter-spacing:-1.8px;display:block;margin:10px 0}.ex-metric p{font-size:11px;color:#6b7d8d;margin:0;line-height:1.6}.ex-accent{background:#082e48;color:white;border-color:#082e48}.ex-accent>span,.ex-accent p{color:#a9c8da}.ex-panel{background:white;border:1px solid #dae3eb;border-radius:8px;padding:30px;margin-bottom:25px;overflow:hidden}.ex-heading{margin-bottom:25px}.ex-heading h2{font-size:23px;font-weight:600;letter-spacing:-.5px;margin:7px 0}.ex-heading p,.ex-panel>p{font-size:13px;color:#657787;max-width:850px}.ex-brief{background:#082e48;color:white;padding:38px 40px;position:relative}.ex-brief .ex-eyebrow{color:#6bcbef}.ex-brief h2{font-size:clamp(25px,3vw,38px);line-height:1.22;font-weight:500;letter-spacing:-.8px;margin:18px 0}.ex-brief>p{color:#b7cedc;max-width:770px;line-height:1.8}.ex-link{background:none;color:#7bd4f4;border:0;padding:14px 0 0;font-size:12px;font-weight:600}.ex-two{display:grid;grid-template-columns:1fr 1fr;gap:25px}.ex-two .ex-panel{min-width:0}.ex-bars{display:grid;gap:20px}.ex-bars label{display:flex;justify-content:space-between;font-size:12px;color:#5e7382;margin-bottom:8px}.ex-bars label b{font-size:15px;color:#14384d}.ex-bars>div>div{height:12px;border-radius:2px;background:#edf3f7;overflow:hidden}.ex-bars i{display:block;height:100%;background:#92b2c6}.ex-bars>div:last-child i{background:#008ec0}.ex-callout{margin-top:25px;padding-top:16px;border-top:1px solid #e5ebf0}.ex-callout strong{font-size:17px;color:#007da5}.ex-callout p,.ex-note{font-size:11px!important;color:#758796!important;line-height:1.7}.ex-target-line{display:flex;align-items:center;gap:20px;margin:30px 0}.ex-target-line>div:not(.ex-target-track){display:grid;gap:4px;white-space:nowrap}.ex-target-line strong{font-size:40px;font-weight:500;letter-spacing:-1px}.ex-target-line span{font-size:10px;color:#738596}.ex-target-track{height:2px;flex:1;background:#91bfd2;position:relative;text-align:center;min-width:40px}.ex-target-track:after{content:'';position:absolute;right:0;top:-4px;width:9px;height:9px;border-right:2px solid #91bfd2;border-top:2px solid #91bfd2;transform:rotate(45deg)}.ex-target-track span{position:absolute;left:0;right:0;top:10px;font-size:9px}.ex-movement-head,.ex-movement-row{display:grid;grid-template-columns:1.1fr 1fr 1.1fr 1.65fr;gap:20px}.ex-movement-head{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#7f91a0;padding-bottom:12px}.ex-movement-row{border-top:1px solid #e2e9ef;padding:20px 0;font-size:12px;align-items:start}.ex-movement-row>b{font-size:12px;font-weight:600}.ex-movement-row p{font-size:11px;color:#718494;margin:7px 0 0}.ex-movement-row small{display:none}.ex-current{color:#007eac;font-weight:600}.ex-movement-row em{font-size:10px;font-style:normal;padding:4px 8px;background:#e7f5f3;color:#197965;border-radius:4px;display:inline-block}.ex-movement-row em.ex-neutral{background:#f2f0e9;color:#8d712f}.ex-actions{display:grid;gap:20px}.ex-actions article{display:flex;gap:20px;padding-top:20px;border-top:1px solid #e3eaf0}.ex-actions article>span{color:#0089b7;font-size:19px}.ex-actions h3{font-size:14px;font-weight:600;margin:0 0 6px}.ex-actions p{font-size:12px;color:#718494;margin:0}.ex-areas,.ex-tech{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.ex-areas button{border:1px solid #e0e7ed;background:#f8fafc;border-radius:6px;text-align:left;padding:20px;color:#17374b}.ex-areas button:hover{border-color:#008abc;background:#eef8fc}.ex-areas small{font-size:10px;color:#657f90}.ex-areas h3{font-size:15px;font-weight:600;margin:13px 0}.ex-areas p{font-size:12px;color:#6b8191}.ex-detail{border:1px solid #d9e3eb;border-radius:8px;background:white;margin:25px 0}.ex-detail summary{padding:22px 28px;cursor:pointer;font-size:13px;font-weight:600}.ex-detail>.ex-note{padding:0 28px}.ex-legacy{background:#07131f;overflow:hidden}.ex-legacy section{scroll-margin-top:80px}.ex-foot{display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#8495a3;border-top:1px solid #d9e3eb;padding-top:20px;margin-top:35px}.ex-app button:focus-visible,.ex-app summary:focus-visible,.ex-app a:focus-visible{outline:3px solid #e3a746;outline-offset:4px}
+@media(max-width:950px){.ex-kpis{grid-template-columns:repeat(2,1fr)}.ex-two{grid-template-columns:1fr}.ex-top>div{font-size:11px}.ex-movement-head,.ex-movement-row{gap:12px}.ex-areas{grid-template-columns:1fr}.ex-main{padding-top:28px}}@media(max-width:600px){.ex-top{height:72px}.ex-top img{max-width:90px;max-height:28px}.ex-top>div{font-size:0}.ex-top a{gap:14px}.ex-top b{font-size:8px}.ex-hero{align-items:flex-start;flex-direction:column}.ex-period{border-left:0;text-align:left;padding:0;gap:0}.ex-period b{font-size:18px}.ex-period small{display:none}.ex-panel{padding:23px}.ex-brief{padding:28px}.ex-metric{padding:18px}.ex-metric strong{font-size:34px}.ex-metric>span{min-height:32px}.ex-tech{grid-template-columns:1fr}.ex-movement-head{display:none}.ex-movement-row{grid-template-columns:1fr 1fr;gap:12px;padding:22px 0}.ex-movement-row>b,.ex-movement-row>div:last-child{grid-column:1/-1}.ex-movement-row small{display:block;font-size:9px;text-transform:uppercase;color:#90a1ad;margin-bottom:5px}.ex-foot{flex-direction:column}.ex-target-line{gap:12px}.ex-target-line strong{font-size:32px}}
+@media print{.ex-tabs,.ex-detail,.ex-link{display:none}.ex-top{position:static}.ex-main{padding:15px}.ex-panel,.ex-metric{break-inside:avoid}.ex-app{-webkit-print-color-adjust:exact;print-color-adjust:exact}.ex-two{grid-template-columns:1fr 1fr}}
+`;
